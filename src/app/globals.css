@@ -147,6 +147,23 @@
     height: 3px;
     border-radius: 2px;
   }
+  .thin::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+    border-radius: 2px;
+  }
+
+  .thin::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+  .thin::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .thin::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #09090a;
@@ -244,7 +261,13 @@
   .saved-container {
     @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:p-14 custom-scrollbar;
   }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
   /* Bottom bar */
   .bottom-bar {
     @apply z-50 flex-between w-full sticky top-2 rounded-t-[20px] bg-dark-2 px-5 pt-0  md:hidden;
@@ -277,21 +300,18 @@
   }
 
   /* Left sidebar */
-  .leftsidebar {
-    @apply hidden md:flex px-6 py-10 flex-col justify-between min-w-[270px] bg-dark-2;
-  }
 
   .leftsidebar-link {
-    @apply rounded-lg base-medium hover:bg-primary-500 transition;
+    @apply rounded-lg text-light-2 base-medium hover:bg-primary-500 transition;
   }
 
   /* Post Card */
   .post-card {
-    @apply bg-dark-2 rounded-3xl border border-dark-4 p-5 lg:p-7 w-full max-w-screen-sm;
+    @apply bg-dark-2 rounded-3xl border border-dark-4 p-5 lg:p-7 w-full;
   }
 
   .post-card_img {
-    @apply h-64 xs:h-[400px] lg:h-[450px] w-full rounded-[24px] object-cover mb-5;
+    @apply xs:h-[400px] md:h-[550px] w-full rounded-[24px]  mb-5;
   }
 
   /* Topbar */
@@ -336,6 +356,63 @@
   .shad-button_ghost {
     @apply flex gap-4 items-center justify-start hover:bg-transparent hover:text-white !important;
   }
+
+  /* / */
+  /* index.css or any other main CSS file */
+
+  /* Custom styles */
+
+  .cardStyle {
+    @apply bg-dark-1 h-[calc(100vh-300px)] text-white w-full p-10;
+  }
+  .headerSubTItle {
+    @apply text-light-2 mt-[-10px]  text-[15px];
+  }
+  .headerTitleStyle {
+    @apply text-2xl text-white font-extrabold mt-[-28px] mb-6;
+  }
+  .inputStyle {
+    @apply h-[50px] mb-[-7px] w-full text-white bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-1 focus-visible:ring-offset-1 ring-offset-light-3 !important;
+  }
+  .labelStyle {
+    @apply text-light-2 text-sm;
+  }
+  .errorMessageStyle {
+    @apply text-sm mt-4;
+  }
+  .googleButtonStyle {
+    @apply h-16 w-20 bg-white;
+  }
+
+  .googleButtonStyle:hover {
+    @apply bg-primary-500/50;
+  }
+
+  .githubButtonStyle {
+    @apply bg-gray-800 text-white rounded-lg p-3 text-lg font-semibold border-none cursor-pointer;
+  }
+
+  .githubButtonStyle:hover {
+    @apply bg-gray-900;
+  }
+
+  .facebookButtonStyle {
+    @apply bg-blue-700 text-white rounded-lg p-3 text-2xl font-semibold border-none cursor-pointer;
+  }
+
+  .facebookButtonStyle:hover {
+    @apply bg-blue-800;
+  }
+
+  .submitButtonStyle {
+    @apply bg-primary-500 text-white rounded-lg p-3 text-lg font-semibold border-none cursor-pointer;
+  }
+
+  .submitButtonStyle:hover {
+    @apply bg-primary-600;
+  }
+
+  /*  */
 }
 
 @layer base {
@@ -346,4 +423,3 @@
     @apply bg-background text-foreground;
   }
 }
-

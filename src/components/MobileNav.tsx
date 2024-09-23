@@ -6,7 +6,7 @@ export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((isOpen) => !isOpen);
   };
 
   return (
@@ -37,7 +37,7 @@ export default function MobileNav() {
       </button>
       <div
         className={`z-10 transition-all   duration-300 ease-out absolute w-full h-[calc(100vh-440px)] left-0  top-full bg-dark-3   ${
-          isOpen ? "translate-y-0 " : "translate-y-[-300px]  w-0 opacity-0"
+          isOpen ? " block" : " hidden"
         }
           }
           }`}
