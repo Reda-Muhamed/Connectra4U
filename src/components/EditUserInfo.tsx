@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function FriendsCard() {
+export default function EditUserInfo() {
   return (
     <div>
       

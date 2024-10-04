@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export default function Birthdays() {
   return (
@@ -22,9 +22,7 @@ export default function Birthdays() {
             alt="User icon"
             className=" w-9 h-9 object-cover rounded-full  "
           />
-          <span className=" ml-2 text-light-2 font-semibold">
-            John Doe
-          </span>
+          <span className=" ml-2 text-light-2 font-semibold">John Doe</span>
         </div>
         <div className="flex items-center gap-2">
           <button className="text-white rounded-lg font-medium bg-[#4f4dcb] py-2 px-3 hover:bg-[#3e3caf]">
@@ -32,7 +30,6 @@ export default function Birthdays() {
           </button>
         </div>
       </div>
- 
 
       {/* Upcoming */}
       <div className="flex gap-4 items-center p-4 bg-dark-4 hover:bg-[#1c1c1c] rounded-lg ">
@@ -45,7 +42,9 @@ export default function Birthdays() {
         />
         <Link href="/" className="text-light-2 flex flex-col  ">
           <span className="font-me"> Upcoming Birthdays</span>
-          <span className="text-sm text-light-3">see others 16 have upcoming birthdays</span>
+          <span className="text-sm text-light-3">
+            see others 16 have upcoming birthdays
+          </span>
         </Link>
       </div>
     </div>

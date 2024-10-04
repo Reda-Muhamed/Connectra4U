@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./_styles/globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
-import RightMenu from "@/components/RightMenu";
-import LeftMenu from "@/components/LeftMenu";
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,19 +30,9 @@ export default function RootLayout({
           <main className="relative flex flex-col min-h-screen bg-dark-1 ">
             <Navbar />
             <div className="flex flex-grow">
-              {/* Left Menu */}
-              <div className="hidden xl:block xl:w-[260px] h-screen overflow-auto  thin ">
-                <LeftMenu />
-              </div>
-
               {/* Main Content */}
-              <div className="flex-1 h-screen overflow-auto custom-scrollbar ">
+              <div className="flex-1 overflow-auto custom-scrollbar ">
                 {children}
-              </div>
-
-              {/* Right Menu */}
-              <div className="hidden lg:block lg:w-[30%] h-screen overflow-scroll custom-scrollbar mt-5">
-                <RightMenu />
               </div>
             </div>
           </main>

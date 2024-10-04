@@ -1,24 +1,23 @@
-"use client";
 import { sidebarLinks } from "@/lib/constants";
 import { INavLink } from "@/lib/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import Spinner from "./Spinner";
-import { Button } from "./ui/button";
+import Spinner from "../Spinner";
+import { Button } from "../ui/button";
 import ProfileCard from "./ProfileCard";
-import Ad from "./Ad";
+import Ad from "../Ad";
+import Logout from "./Logout";
 
-export default function LeftMenu() {
-  const pathname = usePathname();
+export default function LeftMenu({ type }: { type: "home" | "profile" }) {
   return (
     <div className="flex flex-col gap-6 ">
       <nav className="px-3 py-4 bg-dark-2  rounded-md  mr-px">
         <div className="flex flex-col gap-6">
-          {!pathname.includes("profile") && <ProfileCard />}{" "}
+          {type !== "profile" && <ProfileCard />}{" "}
           <ul className="flex flex-col gap-6 ">
             {sidebarLinks.map((item: INavLink) => {
-              const isActive = pathname === item.route;
+              const isActive = type === item.route;
               return (
                 <li
                   className={`leftsidebar-link group ${
@@ -45,14 +44,7 @@ export default function LeftMenu() {
           </ul>
         </div>
 
-        <Button
-          variant="ghost"
-          className="shad-button_ghost mt-5 text-light-2"
-          onClick={() => {}}
-        >
-          {true ? <img src="/assets/icons/logout.svg" /> : <Spinner />}
-          <p className="small-medium lg:base-medium ">Logout</p>
-        </Button>
+        <Logout />
       </nav>
       <div className="mr-px mb-24">
         <Ad />

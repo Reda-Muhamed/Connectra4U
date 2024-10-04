@@ -46,7 +46,7 @@ export default function Post() {
       <div className="w-full h-px bg-gray-900 my-2 mb-3" />
       <PostStats />
       <div className="w-full h-px bg-gray-900 my-3 " />
-      <WrittenComments/>
+      <WrittenComments />
       <AddComment />
     </div>
   );

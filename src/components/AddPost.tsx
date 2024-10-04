@@ -1,7 +1,12 @@
+"use client";
+import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
-import React from "react";
 
 export default function AddPost() {
+  const { userId } = useAuth();
+  console.log(userId);
+ 
+
   return (
     <div className="p-4 w-full flex flex-col shadow-md  text-sm bg-dark-2 rounded-xl  ">
       <div className="flex-between gap-6">
@@ -13,12 +18,17 @@ export default function AddPost() {
             "
           className="min-[150px]:w-12 min-[150px]:h-12 md:w-12 md:h-12 lg:w-12 lg:h-12 rounded-full  "
         />
+
         <div className="flex flex-1 gap-4 items-center ">
           {/* text input */}
-          <textarea
-            className="text-white hover:bg-dark-4 bg-dark-3 outline-none flex-1 border-none focus:ring-2 focus:ring-blue-400 p-3 resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide h-12"
-            placeholder={`What's on your mind, ${"Reda"}?`}
-          />
+          <form  className="flex flex-1">
+            <textarea 
+              className="text-white hover:bg-dark-4 bg-dark-3 outline-none flex-1 border-none focus:ring-2 focus:ring-blue-400 p-3 resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide h-12"
+              placeholder={`What's on your mind, ${"Reda"}?`}
+              name="desc"
+            />
+            <button className="text-light-1">Post</button>
+          </form>
         </div>
       </div>
       {/* Post Options */}
