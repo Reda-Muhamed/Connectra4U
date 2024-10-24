@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/app/profile/[username]/update-profile"  ],
   "exclude": [
     "node_modules"
   ]

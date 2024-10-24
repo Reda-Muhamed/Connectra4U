@@ -65,7 +65,6 @@ export async function POST(req: Request) {
           avatar:
             JSON.parse(body).data.image_url || "/assets/icons/profile.svg",
           cover: "/no-cover.webp",
-          
         },
       });
       return new Response("User has been created!", { status: 200 });

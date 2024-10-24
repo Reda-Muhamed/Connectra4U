@@ -1,17 +1,60 @@
-import React from "react";
+"use client";
 
-export default function PostStats() {
+import React, { useOptimistic, useState } from "react";
+import { Comment, Post as PostType, User } from "@prisma/client";
+import { useAuth } from "@clerk/nextjs";
+import { switchLike } from "@/lib/actions";
+type FeedPostType = PostType & { user: User } & {
+  likes: [{ userId: string }];
+} & {
+  comments: [Comment];
+};
+export default function PostStats({ post }: { post: FeedPostType }) {
+  const { userId, isLoaded } = useAuth();
+  const [likeState, setLikeState] = useState<any>({
+    likeCount: post.likes.length,
+    isLiked: userId ? post.likes.some((like) => like.userId === userId) : false,
+  });
+  const [optimisticLike, switchOptimisticLike] = useOptimistic(
+    likeState,
+    (state, value) => {
+      return {
+        likeCount: state.isLiked ? state.likeCount - 1 : state.likeCount + 1,
+        isLiked: !state.isLiked,
+      };
+    }
+  );
+
+  const likeAction = async () => {
+    // switchOptimisticLike("");
+    try {
+      switchLike(post.id);
+      setLikeState((state: { isLiked: any; likeCount: number }) => ({
+        likeCount: state.isLiked ? state.likeCount - 1 : state.likeCount + 1,
+        isLiked: !state.isLiked,
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className={`flex justify-between mx-3 items-center z-20 `}>
       <div className="flex gap-2 mr-5">
         <img
-          src={`${"/assets/icons/liked.svg"}`}
+          src={`${
+            optimisticLike.isLiked
+              ? "/assets/icons/liked.svg"
+              : "/assets/icons/like.svg"
+          }`}
+          onClick={likeAction}
           alt="like"
           width={25}
           height={25}
           className="cursor-pointer"
         />
-        <p className="small-medium lg:base-medium text-light-2">{2}</p>
+        <p className="small-medium lg:base-medium text-light-2">
+          {optimisticLike.likeCount}{" "}
+        </p>
       </div>
       <div className="flex items-center mr-5 justify-center gap-2 w-[55px] h-[30px] rounded-lg hover:bg-dark-4 ">
         <img
@@ -21,7 +64,9 @@ export default function PostStats() {
           height={25}
           className="cursor-pointer"
         />
-        <p className="small-medium text-light-2 lg:base-medium">{2}</p>
+        <p className="small-medium text-light-2 lg:base-medium">
+          {post?.comments?.length ? post?.comments?.length : ""}
+        </p>
       </div>
 
       <div className="flex items-center justify-center gap-2 w-[55px] h-[30px] rounded-lg hover:bg-dark-4 ">
@@ -32,7 +77,6 @@ export default function PostStats() {
           height={23}
           className="cursor-pointer"
         />
-        <p className="small-medium lg:base-medium text-light-2">{2}</p>
       </div>
     </div>
   );

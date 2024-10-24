@@ -34,7 +34,7 @@ export default async function page({
     },
   });
 
-  if (!user) return notFound(); 
+  if (!user) return notFound();
 
   // const { userId: currentUserId } = auth();
   const { userId: currentUserId } = auth();
@@ -58,18 +58,16 @@ export default async function page({
     name,
     surname,
 
-    createdAt,
     _count,
   } = user || {};
 
   // console.log(user);
   return (
-    <div className="flex flex-grow">
-      {/* Left Menu */}
+    <>
       <div className="hidden xl:block xl:w-[260px] h-screen overflow-auto  thin ">
         <LeftMenu type="profile" />
       </div>
-      <div className="flex-1 overflow-auto thin h-[calc(100vh-60px)]">
+      <div className="flex-1 relative overflow-auto thin  h-[calc(100vh-0px)]">
         <div className="w-full text-white bg-[#17171770]">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col md:items-start xs:items-center lg:items-center justify-center ">
@@ -89,9 +87,9 @@ export default async function page({
                   height={128}
                   quality={100}
                   className="w-32  h-32 rounded-full absolute lg:right-0 lg:left-0 right-0  m-auto left-0  lg:m-auto -bottom-16 ring-4 ring-primary-600 object-cover
-                  
-                  
-                  "
+                    
+                    
+                    "
                 />
               </div>
 
@@ -122,7 +120,10 @@ export default async function page({
                   <button className="bg-primary-500 rounded-md px-3  hover:bg-primary-600 text-white py-2">
                     Add Story
                   </button>
-                  <Link href={`/profile/${username}/updateProfile`} className="bg-primary-500 rounded-md px-3   hover:bg-primary-600 text-white py-2">
+                  <Link
+                    href={`/profile/${username}/update-profile`}
+                    className="bg-primary-500 rounded-md px-3   hover:bg-primary-600 text-white py-2"
+                  >
                     Edit Profile
                   </Link>
                   <button className="bg-primary-500 rounded-md px-3   hover:bg-primary-600 text-white py-2">
@@ -165,15 +166,13 @@ export default async function page({
               {/* // give the name for the user to write on it is page  */}
               <AddPost />
             </div>
-            <Feed />
+            <Feed username={username} />
           </div>
         </div>
       </div>
-
-      {/* Right Menu */}
       <div className="hidden lg:block lg:w-[30%] h-screen overflow-scroll custom-scrollbar mt-5">
         <RightMenu user={user} />
       </div>
-    </div>
+    </>
   );
 }

@@ -4,7 +4,7 @@ import LeftMenu from "@/components/leftMenu/LeftMenu";
 import RightMenu from "@/components/rightMenu/RightMenu";
 import Stories from "@/components/Stories";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="flex flex-grow ">
       {/* Left Menu */}

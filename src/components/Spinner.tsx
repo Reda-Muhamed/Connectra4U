@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <div>
+    <div className="w-full flex items-center justify-center">
       <img
         src="/assets/icons/loader.svg"
         alt="loader"

@@ -1,4 +1,4 @@
-import React, { Suspense, use } from "react";
+import React, { Suspense } from "react";
 import UserInfoCard from "./UserInfoCard";
 import UserMediaCard from "./UserMediaCard";
 import FriendsCard from "./FriendsCard";
@@ -7,7 +7,6 @@ import FriendRequest from "./FriendRequest";
 import Birthdays from "./Birthdays";
 import { User } from "@prisma/client";
 import Spinner from "../Spinner";
-import { auth } from "@clerk/nextjs/server";
 
 export default function RightMenu({ user }: { user?: User }) {
   if (user)

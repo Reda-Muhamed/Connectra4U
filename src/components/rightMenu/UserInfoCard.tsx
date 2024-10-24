@@ -2,8 +2,7 @@ import prisma from "@/lib/client";
 import { auth } from "@clerk/nextjs/server";
 import { User } from "@prisma/client";
 import Image from "next/image";
-import Link from "next/link";
-import React, { use } from "react";
+import React from "react";
 import UserInfoCardInteraction from "./UserInfoCardInteraction";
 import EditUserInfo from "../EditUserInfo";
 

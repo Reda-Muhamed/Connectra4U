@@ -1,18 +1,39 @@
+"use client";
+import { addComment } from "@/lib/actions";
+import { User } from "@prisma/client";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
-export default function AddComment() {
+export default function AddComment({
+  currentUser,
+  postId,
+}: {
+  currentUser: User;
+  postId: number;
+}) {
+  const router = useRouter();
+  const [desc, setDesc] = useState("");
+  // add comment take postId , content
+  const handleAddComment = async () => {
+    if (!desc || !postId) return;
+    await addComment(postId, desc);
+    setDesc("");
+    router.refresh();
+  };
   return (
     <div className="flex items-center gap-4 mt-4">
       <Image
         width={23}
         height={23}
-        src="https://images.pexels.com/photos/28250738/pexels-photo-28250738/free-photo-of-couple-embracing-on-bridge.jpeg"
-        alt="Add Post
+        src={currentUser?.avatar || "/assets/icons/profile-placeholder.svg"}
+        alt="Add comment
             "
         className="min-[150px]:w-8 min-[150px]:h-8 md:w-9 md:h-9 lg:w-11 lg:h-11 rounded-full  "
       />
       <textarea
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
         className="text-white  bg-dark-3 outline-none flex-1 border-none focus:ring-1 focus:ring-blue-400 xs:p-2 sm:p-3  resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide xs:h-10  md:h-12"
         placeholder={`Write a comment...`}
       />
@@ -24,6 +45,7 @@ export default function AddComment() {
           alt="send
             "
           className="min-[150px]:w-8 min-[150px]:h-8 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-full cursor-pointer  "
+          onClick={handleAddComment}
         />
       </div>
     </div>

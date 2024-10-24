@@ -1,33 +1,39 @@
-"use client";
-import { useAuth } from "@clerk/nextjs";
+import prisma from "@/lib/client";
+import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function AddPost() {
-  const { userId } = useAuth();
-  console.log(userId);
- 
-
+export default async function AddPost() {
+  const { userId } = auth();
+  if (!userId) return;
+  const user = await prisma.user.findFirst({
+    where: {
+      id: userId,
+    },
+  });
+  const { avatar, username } = user || {};
+  // console.log(user);
   return (
     <div className="p-4 w-full flex flex-col shadow-md  text-sm bg-dark-2 rounded-xl  ">
       <div className="flex-between gap-6">
-        <Image
-          width={60}
-          height={60}
-          src="https://images.pexels.com/photos/28250738/pexels-photo-28250738/free-photo-of-couple-embracing-on-bridge.jpeg"
-          alt="profile
+        <Link href={`/profile/${username}`}>
+          <Image
+            width={60}
+            height={60}
+            src={avatar ? avatar : "assets/icons/profile-placeholder.svg"}
+            alt="profile
             "
-          className="min-[150px]:w-12 min-[150px]:h-12 md:w-12 md:h-12 lg:w-12 lg:h-12 rounded-full  "
-        />
-
+            className="min-[150px]:w-12 min-[150px]:h-12 md:w-12 md:h-12 lg:w-12 lg:h-12 rounded-full  "
+          />
+        </Link>
         <div className="flex flex-1 gap-4 items-center ">
           {/* text input */}
-          <form  className="flex flex-1">
-            <textarea 
-              className="text-white hover:bg-dark-4 bg-dark-3 outline-none flex-1 border-none focus:ring-2 focus:ring-blue-400 p-3 resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide h-12"
+          <form className="flex flex-1">
+            <textarea
+              className="text-white cursor-pointer hover:bg-dark-4 bg-dark-3 outline-none flex-1 border-none focus:ring-2 focus:ring-blue-400 p-3 resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide h-12"
               placeholder={`What's on your mind, ${"Reda"}?`}
               name="desc"
             />
-            <button className="text-light-1">Post</button>
           </form>
         </div>
       </div>

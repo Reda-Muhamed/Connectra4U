@@ -27,14 +27,7 @@ export default async function ProfileCard() {
     cover,
     name,
     surname,
-    bio,
-    city,
-    school,
-    faculty,
-    work,
-    linkedin,
-    github,
-    createdAt,
+
     _count,
   } = user || {};
   return (
