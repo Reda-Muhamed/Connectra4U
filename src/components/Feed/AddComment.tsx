@@ -34,8 +34,8 @@ export default function AddComment({
       <textarea
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
-        className="text-white  bg-dark-3 outline-none flex-1 border-none focus:ring-1 focus:ring-blue-400 xs:p-2 sm:p-3  resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide xs:h-10  md:h-12"
-        placeholder={`Write a comment...`}
+        className="text-white  placeholder:text-sm  placeholder:text-start  bg-dark-3 outline-none flex-1 border-none focus:ring-1 focus:ring-blue-400 py-2 px-3  sm:p-3  resize-none  rounded-3xl flex-center overflow-scroll scrollbar-hide xs:h-10  md:h-12"
+        placeholder={` Write a comment...`}
       />
       <div className="p-2 hover:bg-dark-4 rounded-full flex items-center justify-center">
         <Image
@@ -44,7 +44,7 @@ export default function AddComment({
           src="/assets/icons/send.svg"
           alt="send
             "
-          className="min-[150px]:w-8 min-[150px]:h-8 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-full cursor-pointer  "
+          className="min-[150px]:w-6 min-[150px]:h-6 md:w-8 md:h-8 lg:w-9 lg:h-9 rounded-full cursor-pointer  "
           onClick={handleAddComment}
         />
       </div>

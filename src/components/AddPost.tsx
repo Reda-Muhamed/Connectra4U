@@ -38,7 +38,7 @@ export default async function AddPost() {
         </div>
       </div>
       {/* Post Options */}
-      <div className="flex items-center  gap-9 lg:mt-5 mt-4 ml-auto lg:mr-16 sm:mr-10 text-gray-200">
+      <div className="flex items-center gap-4 md:gap-9 lg:mt-5 mt-4 ml-auto lg:mr-16 sm:mr-10 text-gray-200">
         <div className="flex gap-2 cursor-pointer items-center">
           <Image
             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxLjJlbSIgaGVpZ2h0PSIxLjJlbSIgdmlld0JveD0iMCAwIDI0IDI0Ij4KCTxwYXRoIGZpbGw9IiM0ZjRkY2IiIGQ9Ik04LjgxMyAxMS42MTJjLjQ1Ny0uMzguOTE4LS4zOCAxLjM4Ni4wMTFsLjEwOC4wOThsNC45ODYgNC45ODZsLjA5NC4wODNhMSAxIDAgMCAwIDEuNDAzLTEuNDAzbC0uMDgzLS4wOTRMMTUuNDE1IDE0bC4yOTItLjI5M2wuMTA2LS4wOTVjLjQ1Ny0uMzguOTE4LS4zOCAxLjM4Ni4wMTFsLjEwOC4wOThsNC42NzQgNC42NzVhNCA0IDAgMCAxLTMuNzc1IDMuNTk5TDE4IDIySDZhNCA0IDAgMCAxLTMuOTgtMy42MDNsNi42ODctNi42OXpNMTggMmE0IDQgMCAwIDEgMy45OTUgMy44TDIyIDZ2OS41ODVsLTMuMjkzLTMuMjkybC0uMTUtLjEzN2MtMS4yNTYtMS4wOTUtMi44NS0xLjA5Ny00LjA5Ni0uMDE3bC0uMTU0LjE0bC0uMzA3LjMwNmwtMi4yOTMtMi4yOTJsLS4xNS0uMTM3Yy0xLjI1Ni0xLjA5NS0yLjg1LTEuMDk3LTQuMDk2LS4wMTdsLS4xNTQuMTRMMiAxNS41ODVWNmE0IDQgMCAwIDEgMy44LTMuOTk1TDYgMnptLTIuOTkgNWwtLjEyNy4wMDdhMSAxIDAgMCAwIDAgMS45ODZMMTUgOWwuMTI3LS4wMDdhMSAxIDAgMCAwIDAtMS45ODZ6IiAvPgo8L3N2Zz4="
